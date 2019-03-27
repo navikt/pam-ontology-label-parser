@@ -6,7 +6,7 @@
 	
 	<groupId>no.nav.arbeid.pam</groupId>
 	<artifactId>pam-ontology-label-parser</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>jar</packaging>
 	<name>pam-ontology-label-parser</name>
 	<description>Parser labels.jsonl og gir en output tilpasset neo4j</description>
