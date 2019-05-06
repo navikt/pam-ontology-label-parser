@@ -1,3 +1,7 @@
 target/
 dependency-reduced-pom.xml
+.idea/
+id_rsa_pam-ontology-label-parser_read
+id_rsa_pam-ontology-label-parser_read.pub
+pam-ontology-label-parser.iml
 

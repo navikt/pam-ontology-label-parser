@@ -39,6 +39,7 @@ public class LabelParser {
             writer.println("<key attr.name=\"tag\" attr.type=\"string\" for=\"node\" id=\"d1\" />");
             writer.println("<key attr.name=\"value\" attr.type=\"string\" for=\"node\" id=\"d2\" />");
             writer.println("<key attr.name=\"labels\" attr.type=\"string\" for=\"node\" id=\"d3\" />");
+            writer.println("<key attr.name=\"conceptid\" attr.type=\"int\" for=\"node\" id=\"d4\" />");
             writer.println("<graph edgedefault=\"directed\">");
 
             writer3.println("<?xml version='1.0' encoding='utf-8'?>");
@@ -88,6 +89,7 @@ public class LabelParser {
                 writer.printf("  <data key=\"d1\">%s</data>\n", tag);
                 writer.printf("  <data key=\"d2\">%s</data>\n", encodeXML(value));
                 writer.println("  <data key=\"d3\">TERM</data>");
+                writer.printf("  <data key=\"d4\">%d</data>\n", id);
                 writer.println("</node>");
 
                 writer3.printf("<edge source=\"%d\" target=\"%d\">\n", id, nodeId);
