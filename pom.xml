@@ -71,25 +71,10 @@
 		<tag>HEAD</tag>
 	</scm>
 
-	<repositories>
-		<repository>
-			<id>repo.adeo.no</id>
-			<name>Maven repo i iApp-sonen</name>
-			<url>https://repo.adeo.no/repository</url>
-		</repository>		
-	</repositories>
-
 	<distributionManagement>
 		<repository>
-			<id>m2internal</id>
-			<name>NAV Maven2 Internal Repository</name>
-			<url>https://repo.adeo.no/repository/maven-releases/</url>
+			<id>github</id>
+			<url>https://maven.pkg.github.com/navikt/pam-ontology-label-parser</url>
 		</repository>
-		<snapshotRepository>
-			<id>m2snapshot</id>
-			<name>NAV Maven2 Snapshot Repository</name>
-			<url>https://repo.adeo.no/repository/maven-snapshots/</url>
-			<uniqueVersion>false</uniqueVersion>
-		</snapshotRepository>
 	</distributionManagement>
 </project>
