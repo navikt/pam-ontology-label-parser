@@ -7,7 +7,7 @@ test "$GITHUB_TOKEN" || { echo "Error: env var GITHUB_TOKEN not set"; exit 1; }
 test "$GITHUB_ACTOR" || { echo "Error: env var GITHUB_ACTOR not set"; exit 1; }
 test "$GITHUB_REPOSITORY" || { echo "Error: env var GITHUB_REPOSITORY not set"; exit 1; }
 
-PROJECT_VERSION=$(mvnw -B -q help:evaluate -Dexpression=project.version -DforceStdout=true)
+PROJECT_VERSION=$(./mvnw -B -q help:evaluate -Dexpression=project.version -DforceStdout=true)
 RELEASE_VERSION=${PROJECT_VERSION%-SNAPSHOT}
 if [ "${PROJECT_VERSION}" = "${RELEASE_VERSION}" ]; then
     echo >&2 "Expected a SNAPSHOT version in POM, will not continue with automatic release."
@@ -17,10 +17,10 @@ fi
 NEXT_SNAPSHOT_VERSION="$((RELEASE_VERSION + 1))-SNAPSHOT"
 
 echo "-- Setting release version $RELEASE_VERSION .."
-mvnw -B versions:set -DnewVersion="$RELEASE_VERSION" -DgenerateBackupPoms=false
+./mvnw -B versions:set -DnewVersion="$RELEASE_VERSION" -DgenerateBackupPoms=false
 
 echo "-- Build, test and deploy release .."
-mvnw -B --settings maven-settings.xml clean deploy -Dmaven.wagon.http.pool=false
+./mvnw -B --settings maven-settings.xml clean deploy -Dmaven.wagon.http.pool=false
 
 
 echo "-- Commit and tag release version .."
@@ -35,7 +35,7 @@ git tag -f -a -m "Release $RELEASE_VERSION" "$RELEASE_VERSION"
 git push -q --tags origin
 
 echo "-- Bump to next development version $NEXT_SNAPSHOT_VERSION .."
-mvnw -B versions:set -DnewVersion="$NEXT_SNAPSHOT_VERSION" -DgenerateBackupPoms=false
+./mvnw -B versions:set -DnewVersion="$NEXT_SNAPSHOT_VERSION" -DgenerateBackupPoms=false
 
 echo "-- Commit next development version .."
 git commit -am "Set next project version to $NEXT_SNAPSHOT_VERSION"
